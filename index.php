@@ -54,7 +54,7 @@
                 $result = mysqli_query($connection, $query);
                 while ($table = mysqli_fetch_row($result)) {
                     echo
-                    "<tr>
+                        "<tr>
                         <td>$table[0]</td>
                         <td>$table[1]</td>
                         <td>$table[2]</td>
@@ -62,10 +62,11 @@
 
 
                 }
+                echo "</table>";
                 echo "</div>";
             }
             ?>
-            </table>
+
 
         </section>
         <section id="blok_prawy">
@@ -79,7 +80,7 @@
                     $list = mysqli_fetch_row($result);
 
                     echo
-                    "<ol>
+                        "<ol>
                         <li>$list[0] $list[1]</li>
                         <li$list[0] $list[1]</li>
                     </ol>";
@@ -97,7 +98,7 @@
                     $id = $_POST['user'];
                     $query = "INSERT INTO rejestr(data, id_personel, id_pojazd) VALUES (CURRENT_DATE, '{$id}', 14);";
                     $result = mysqli_query($connection, $query);
-                } 
+                }
                 $query = mysqli_close($connection);
                 ?>
             </form>
