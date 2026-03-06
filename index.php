@@ -36,32 +36,34 @@
             </form>
 
             <?php
-                if (isset($_POST['status'])) {
-                    $opcje = $_POST['status'];
+            if (isset($_POST['status'])) {
+                $opcje = $_POST['status'];
 
-                    echo "<h2>Wybrano opcje: {$opcje}</h2>";
+                echo "<h3>Wybrano opcje: {$opcje}</h3>";
 
-                    echo "<div id='teble_center'>";
-                    echo "<table>";
-                    echo "<tr>";
-                    echo "<th>id</th>";
-                    echo "<th>Imie</th>";
-                    echo "<th>Nazwisko</th>";
-                    echo "</tr>";
+                echo
+                    "<div id='teble_center'>
+                     <table>
+                     <tr>
+                     <th>id</th>
+                     <th>Imie</th>
+                     <th>Nazwisko</th>
+                     </tr>";
 
-                    $query = "SELECT personel.id, personel.imie, personel.nazwisko FROM personel WHERE personel.status = '{$opcje}'";
-                    $result = mysqli_query($connection, $query);
-                    while ($table = mysqli_fetch_row($result)) {
-                        echo "<tr>";
-                        echo "<td>$table[0]</td>";
-                        echo "<td>$table[1]</td>";
-                        echo "<td>$table[2]</td>";
-                        echo "</tr>";
+                $query = "SELECT personel.id, personel.imie, personel.nazwisko FROM personel WHERE personel.status = '{$opcje}'";
+                $result = mysqli_query($connection, $query);
+                while ($table = mysqli_fetch_row($result)) {
+                    echo
+                    "<tr>
+                        <td>$table[0]</td>
+                        <td>$table[1]</td>
+                        <td>$table[2]</td>
+                     </tr>";
 
 
-                    }
-                    echo "</div>";
                 }
+                echo "</div>";
+            }
             ?>
             </table>
 
@@ -76,10 +78,11 @@
                 for ($i = 0; $i < mysqli_num_rows($result); $i++) {
                     $list = mysqli_fetch_row($result);
 
-                    echo "<ol>";
-                    echo "<li>$list[0] $list[1]</li>";
-                    echo "<li$list[0] $list[1]</li>";
-                    echo "</ol>";
+                    echo
+                    "<ol>
+                        <li>$list[0] $list[1]</li>
+                        <li$list[0] $list[1]</li>
+                    </ol>";
                 }
 
                 ?>
@@ -94,7 +97,7 @@
                     $id = $_POST['user'];
                     $query = "INSERT INTO rejestr(data, id_personel, id_pojazd) VALUES (CURRENT_DATE, '{$id}', 14);";
                     $result = mysqli_query($connection, $query);
-                }
+                } 
                 $query = mysqli_close($connection);
                 ?>
             </form>
